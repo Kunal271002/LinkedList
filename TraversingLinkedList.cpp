@@ -1,16 +1,13 @@
 #include <iostream>
 using namespace std;
-// Defining a class to represent every element of the linked list
 class Node {
 public:
-    // Data will store in this node
     int data;
-    // Reference of the next node
     Node* next;
 
     // Constructor for creating a node with given data
     Node(int data) {
-        this->data = data;
+        this->data = data;  
         // there is no next node initially
         this->next = nullptr;
     }
@@ -28,10 +25,10 @@ int main() {
     // Printing all elements of the singly linked list
     Node* ptr = head;
     while (ptr != nullptr) {
-        std::cout << ptr->data << " ";
+        cout << ptr->data << " ";
         ptr = ptr->next;
     }
-    std::cout << std::endl;
+    cout << endl;
 
     // Don't forget to free memory to avoid memory leaks
     ptr = head;
@@ -43,4 +40,3 @@ int main() {
 
     return 0;
 }
-//This code is contributed by Utkasrh
