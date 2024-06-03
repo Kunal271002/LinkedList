@@ -12,12 +12,9 @@ class Node{
 };
 
 
-
-
-
 int main(){
 
-    Node First(2);
+    Node First(1);
     cout<<First.value<<" "<<First.address;
     return 0;
 }
