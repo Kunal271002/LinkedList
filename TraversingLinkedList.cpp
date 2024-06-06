@@ -1,42 +1,23 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
-class Node {
-public:
+
+struct Node{
+
     int data;
-    Node* next;
-
-    // Constructor for creating a node with given data
-    Node(int data) {
-        this->data = data;  
-        // there is no next node initially
-        this->next = nullptr;
-    }
+    Node * pointer;
 };
+int main(){
+    Node *Head = new Node();
+    Node *First = new Node();
+    Node *second = new Node();
+    
 
-// Main class to execute the code
-int main() {
-    // Define the head of the linked list
-    Node* head = new Node(10);
-    // Inserting some elements in the list
-    head->next = new Node(20);
-    head->next->next = new Node(30);
-    head->next->next->next = new Node(40);
+    Head->data = 5;
+    Head->pointer = First;
 
-    // Printing all elements of the singly linked list
-    Node* ptr = head;
-    while (ptr != nullptr) {
-        cout << ptr->data << " ";
-        ptr = ptr->next;
-    }
-    cout << endl;
+    First->data = 10;
+    First->pointer = second;
 
-    // Don't forget to free memory to avoid memory leaks
-    ptr = head;
-    while (ptr != nullptr) {
-        Node* temp = ptr;
-        ptr = ptr->next;
-        delete temp;
-    }
-
-    return 0;
+    second->data = 20;
+    second->pointer = NULL;
 }
