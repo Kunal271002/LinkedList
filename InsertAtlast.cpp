@@ -1,7 +1,5 @@
 // Not Proper
 
-
-
 #include<iostream>
 using namespace std;
 
@@ -38,7 +36,7 @@ int main(){
     head = Push(5, head);
     head = Push(10, head);
     head = Push(15, head);
-    // InsertAtLast(head->next, 1);
+    InsertAtLast(head->next, 1);
     print(head);
     
 }

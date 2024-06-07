@@ -7,14 +7,24 @@ struct Node{
     Node *ptr;
 };
 
-Node *push(Node *head, int newData ){
+// Node *push(Node *head, int newData ){    //Without Head Refrence
+
+//     Node *newNode = new Node();
+//     newNode->data = newData;
+//     newNode->ptr = head; 
+//     head = newNode;
+//     return head;
+// };
+
+void push(Node **head_ref, int newData ){  //With Head Refrence
 
     Node *newNode = new Node();
     newNode->data = newData;
-    newNode->ptr = head; 
-    head = newNode;
-    return head;
+    newNode->ptr = *head_ref; 
+    *head_ref = newNode;
 };
+
+
 
 void print(Node *n){
     int count = 0;
@@ -29,8 +39,10 @@ void print(Node *n){
 int main(){
 
     Node *head = NULL;
-    head = push(head, 5);
-    head = push(head, 10);
+    // push(head, 5);
+    // push(head, 10);   // Without Head Refrenence
+    push(&head, 5);   
+    push(&head, 10);   //With Head Refrenece
     print(head);
 
 
