@@ -1,0 +1,1 @@
+    InsertAfter(head->next, 55.5);
