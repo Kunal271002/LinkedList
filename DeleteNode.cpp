@@ -1,51 +1,57 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
-struct Node {
-  int data;
-  Node* next;
-
-  Node(int data) {
-    this->data = data;
-    this->next = nullptr;
-  }
+struct Node{
+    int Data;
+    Node *next;
 };
-
-// Function to delete a node (only works if not the last node)
-void deleteNode(Node* node) {
-  if (node == nullptr || node->next == nullptr) {
-    // Can't delete the last node or null node
-    return;
-  }
-
-  // Copy data from next node to current node
-  node->data = node->next->data;
-
-  // Update next pointer to skip the deleted node
-  node->next = node->next->next;
+void Print(Node *n){
+    int count = 0;
+    while(n != NULL){
+      cout<<n->Data<<endl;
+      n = n->next;
+      count++;
+    }
+    cout<<"The Number of Elements present in the LinkedList is : "<<count<<endl;
 }
+void Push(Node **head_ref, int NewData){
+    Node *NewNode = new Node();
+    NewNode->Data = NewData;
+    NewNode->next = *head_ref;
+    *head_ref = NewNode;  
+};
+void Delete(Node **head_ref, int Key){
+    // Initilize 
+    Node *temp, *prev;
+    // Put head in Temp 
+    temp = *head_ref;
 
-int main() {
-  // Sample linked list
-  Node* node1 = new Node(1);
-  Node* node2 = new Node(2);
-  Node* node3 = new Node(3);
-  node1->next = node2;
-  node2->next = node3;
+    if(temp != NULL && temp->Data == Key){
+      *head_ref = temp->next;
+      free (temp);
+      return;
+    }
 
-  // Delete the second node (node2)
-  deleteNode(node2);
+    // If the key doesn't Find in the starting then traverse the Linkedlist;
+    while(temp != NULL && temp->Data != Key){
+      prev = temp;
+      temp = temp->next;
+    }
 
-  // Print the remaining list (1 -> 3)
-  Node* current = node1;
-  while (current != nullptr) {
-    cout << current->data << " -> ";
-    current = current->next;
-  }
-  cout << "NULL" << endl;
+    if(temp == NULL){
+      return;
+    }
+    //If we have found the key then
+    prev->next = temp->next;
+    free(temp);
 
-  // Deallocate memory (not shown in deleteNode)
-  delete node1;
-  delete node3;
-
-  return 0;
+}
+int main(){
+    Node *head = NULL;
+    Push(&head, 5);
+    Push(&head, 10);
+    Push(&head, 15);
+    Push(&head, 20);
+    Print(head);
+    Delete(&head, 15);
+    Print(head);
 }
