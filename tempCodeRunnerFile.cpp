@@ -1,1 +1,2 @@
-    InsertAfter(head->next, 55.5);
+InsertAtMiddle(5, &head);
+    Print(head);
