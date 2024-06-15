@@ -41,6 +41,7 @@ void InsertAtMiddle(int MiddleData, Node *prev_Node){
     if(prev_Node != NULL){
         MiddleNode->next->prev = MiddleNode; 
     }
+    
 }
 
 int main(){
